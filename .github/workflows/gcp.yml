@@ -39,4 +39,3 @@ jobs:
         with:
           name: function-1
           runtime: nodejs10
-          source_dir: ./dist/
