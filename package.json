@@ -2,9 +2,9 @@
   "name": "cloud-function-cicd",
   "version": "1.0.0",
   "description": "Demonstrate automation of a Node.JS Cloud Function",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "npx @google-cloud/functions-framework --target=helloWorld",
+    "start": "npx @google-cloud/functions-framework --source=dist/index.js --target=helloWorld",
     "build": "webpack",
     "lint": "eslint",
     "test": "mocha --reporter spec"
