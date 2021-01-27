@@ -1,0 +1,30 @@
+{
+  "name": "cloud-function-cicd",
+  "version": "1.0.0",
+  "description": "Demonstrate automation of a Node.JS Cloud Function",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @google-cloud/functions-framework --target=helloWorld",
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guigacarvalho/cloud-function-cicd.git"
+  },
+  "keywords": [
+    "cicd",
+    "cloud-function",
+    "gcp",
+    "devops",
+    "automation"
+  ],
+  "author": "Guilherme Carvalho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guigacarvalho/cloud-function-cicd/issues"
+  },
+  "homepage": "https://github.com/guigacarvalho/cloud-function-cicd#readme",
+  "devDependencies": {
+    "mocha": "^8.2.1"
+  }
+}
