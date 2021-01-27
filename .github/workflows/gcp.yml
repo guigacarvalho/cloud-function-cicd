@@ -49,7 +49,7 @@ jobs:
     needs: build
     steps:
       - name: deploy
-      - uses: google-github-actions/deploy-cloud-functions@main
+        uses: google-github-actions/deploy-cloud-functions@main
         with:
           name: hello
           runtime: nodejs14
