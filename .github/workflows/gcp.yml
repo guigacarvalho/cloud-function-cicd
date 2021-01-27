@@ -37,7 +37,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    needs: lint
+    needs: setup
     steps:
       - name: Unit Tests
         run: npm run test
