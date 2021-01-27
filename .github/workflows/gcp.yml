@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      - name: Build
+      - name: Webpack Build
         run: npm run build
   lint:
     name: Lint
@@ -41,14 +41,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: setup
     steps:
-      - name: Test
+      - name: Unit Tests
         run: npm run test
   deploy:
     name: Functions Deploy
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: deploy
+      - name: Deploy Function
         uses: google-github-actions/deploy-cloud-functions@main
         with:
           name: hello
