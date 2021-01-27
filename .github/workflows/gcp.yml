@@ -33,7 +33,7 @@ jobs:
         uses: google-github-actions/deploy-cloud-functions@main
         with:
           name: hello
-          runtime: nodejs10
+          runtime: nodejs14
           source_dir: dist
           entry_point: helloWorld
           credentials: ${{ secrets.GCP_CREDENTIALS }}
