@@ -4,23 +4,34 @@ name: Build and Deploy to GKE
 on:
   release:
     types: [created]
-
-env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT }}
+  workflow_dispatch:
 
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
-
+    strategy:
+          matrix:
+            node-version: [14.x]
     steps:
-      - name: GCP Authorization
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          service_account_key: ${{ secrets.GCP_CREDENTIALS }}
-          export_default_credentials: true
+          node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
+      - name: Test
+        run: npm run test
       - name: Cloud Functions Deploy
         uses: google-github-actions/deploy-cloud-functions@main
         with:
-          name: function-1
-          runtime: nodejs10
+          name: hello
+          runtime: nodejs14
+          source_dir: dist
+          entry_point: helloWorld
+          credentials: ${{ secrets.GCP_CREDENTIALS }}
