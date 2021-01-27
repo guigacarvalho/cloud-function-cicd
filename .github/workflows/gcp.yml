@@ -34,6 +34,6 @@ jobs:
         with:
           name: hello
           runtime: nodejs10
-          source: dist
+          source_dir: dist
           entry_point: helloWorld
           credentials: ${{ secrets.GCP_CREDENTIALS }}
