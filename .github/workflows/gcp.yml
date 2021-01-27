@@ -29,14 +29,11 @@ jobs:
         run: npm run build
       - name: Test
         run: npm run test
-      - name: GCP Authorization
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          service_account_key: ${{ secrets.GCP_CREDENTIALS }}
-          export_default_credentials: true
       - name: Cloud Functions Deploy
         uses: google-github-actions/deploy-cloud-functions@main
         with:
           name: hello
           runtime: nodejs10
           source: dist
+          entry_point: helloWorld
+          credentials: ${{ secrets.GCP_CREDENTIALS }}
